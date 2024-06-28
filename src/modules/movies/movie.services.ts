@@ -12,9 +12,19 @@ const createMovie = async (payLoad: TMovie) => {
 const getAllMovies = async () => {
     const result = await Movie.find();
     return result
+
+
+}
+
+
+// finding by id 
+const findSingleMovie = async (id: string) => {
+    const result = await Movie.findById(id)
+    return result;
 }
 
 export const movieServies = {
     createMovie,
-    getAllMovies
+    getAllMovies,
+    findSingleMovie
 }

@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.post('/', movieControllers.createMovie)
 router.get('/', movieControllers.getAllMovie)
+router.get('/:movieId', movieControllers.findSingleMovie)
 
 export const MovieRouter = router;

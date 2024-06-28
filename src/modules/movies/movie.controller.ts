@@ -31,7 +31,33 @@ const getAllMovie = async (req: Request, res: Response) => {
     }
 }
 
+// getting movie with id 
+
+const findSingleMovie = async (req: Request, res: Response) => {
+    try {
+        const { movieId } = req.params
+
+        const result = await movieServies.findSingleMovie(movieId)
+        res.json({
+            success: true,
+            message: "find by id successfully ",
+            data: result
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "failed to fetch by id  ",
+            data: error
+        })
+
+    }
+}
+
+
+
 export const movieControllers = {
     createMovie,
-    getAllMovie
+    getAllMovie,
+    findSingleMovie
 }
