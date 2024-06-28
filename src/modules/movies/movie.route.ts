@@ -1,10 +1,9 @@
-import express, { Request, Response } from "express"
+import express from "express"
+// import { Movie } from "./movie.model";
+import { movieControllers } from "./movie.controller";
 
 const router = express.Router();
 
-router.post('/', (req: Request, res: Response) => {
-    // res.send("hi from movie router    ")
-    console.log(req.body)
-})
+router.post('/', movieControllers.createMovie)
 
 export const MovieRouter = router;
