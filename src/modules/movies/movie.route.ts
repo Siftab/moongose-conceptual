@@ -5,5 +5,6 @@ import { movieControllers } from "./movie.controller";
 const router = express.Router();
 
 router.post('/', movieControllers.createMovie)
+router.get('/', movieControllers.getAllMovie)
 
 export const MovieRouter = router;
