@@ -23,7 +23,8 @@ const MovieSchema = new Schema<TMovie>({
     genre: { type: String, required: true },
     isDeleted: { type: Boolean, default: false },
     viewCount: { type: Number, default: 0 },
-    reviews: [ReviewSchema]
+    reviews: [ReviewSchema],
+    slug: { type: String }
 });
 
 export const Movie = model<TMovie>("Movie", MovieSchema)

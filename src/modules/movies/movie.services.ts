@@ -6,9 +6,10 @@ import { Movie } from "./movie.model"
 
 const createMovie = async (payLoad: TMovie) => {
     const date = format(payLoad.releaseDate, 'dd-MM-yyyy')
-    console.log(`${payLoad.title.toLowerCase()}-${date}`, "date")
-    // const result = await Movie.create(payLoad)
-    // return result
+    const slug = `${payLoad.title.toLowerCase()}-${date}`
+    console.log(slug, date, "slug")
+    const result = await Movie.create({ ...payLoad, slug })
+    return result
 }
 // finding alla movie 
 

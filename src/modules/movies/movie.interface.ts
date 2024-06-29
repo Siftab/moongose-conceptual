@@ -12,4 +12,5 @@ export interface TMovie {
     isDeleted: boolean;
     viewCount: number;
     reviews: [TReview];
+    slug?: string;
 }
