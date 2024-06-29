@@ -53,11 +53,34 @@ const findSingleMovie = async (req: Request, res: Response) => {
 
     }
 }
+// getting movie by slug 
+const getMovieBySlug = async (req: Request, res: Response) => {
+    try {
+        const { slug } = req.params;
+        const result = await movieServies.getMovieBySlug(slug)
+        console.log(slug)
+
+        res.json({
+            success: true,
+            message: "success with slug findings ",
+            data: result
+        })
+
+    } catch (error) {
+        res.json({
+            success: false,
+            message: "failed with slug findings ",
+            data: error
+        })
+
+    }
+}
 
 
 
 export const movieControllers = {
     createMovie,
     getAllMovie,
-    findSingleMovie
+    findSingleMovie,
+    getMovieBySlug
 }
