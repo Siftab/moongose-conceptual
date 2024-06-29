@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { TMovie, TReview } from "./movie.interface";
+import { format } from "date-fns";
 
 const ReviewSchema = new Schema<TReview>({
     email: {
@@ -26,5 +27,11 @@ const MovieSchema = new Schema<TMovie>({
     reviews: [ReviewSchema],
     slug: { type: String }
 });
+MovieSchema.pre("save", async function (next) {
+    const date = format(this.releaseDate, 'dd-MM-yyyy')
+    this.slug = `${this.title.toLowerCase()}-${date}`
+    next
+
+})
 
 export const Movie = model<TMovie>("Movie", MovieSchema)
